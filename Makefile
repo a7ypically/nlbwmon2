@@ -4,10 +4,10 @@ PKG_NAME:=nlbwmon
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/jow-/nlbwmon.git
-PKG_SOURCE_DATE:=2021-09-01
-PKG_SOURCE_VERSION:=d82c910cc3d6021567c925e767ed1fd8c3934f4b
-PKG_MIRROR_HASH:=0ec86d002c514691d7ac94fcc5055f346fe5d255cc39598c36f5ef41fab86f0a
+PKG_SOURCE_URL:=https://github.com/a7ypically/nlbwmon.git
+PKG_SOURCE_DATE:=2023-09-23
+PKG_SOURCE_VERSION:=ad4a63da64237803b2c2b9cb4f038750a4fad7c4
+PKG_MIRROR_HASH:=ac83e2e8aa96d48b6989e6103e9f25af03b0a5899b2b007ed5a0426bd44aea0e
 
 CMAKE_INSTALL:=1
 
@@ -24,7 +24,7 @@ TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include/libnl-tiny
 define Package/nlbwmon
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libubox +libnl-tiny +zlib +kmod-nf-conntrack-netlink
+  DEPENDS:=+libubox +libnl-tiny +zlib +kmod-nf-conntrack-netlink +libustream-wolfssl +libuci +libubus
   TITLE:=OpenWrt Traffic Usage Monitor
 endef
 

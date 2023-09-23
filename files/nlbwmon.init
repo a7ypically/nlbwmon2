@@ -7,6 +7,14 @@ NAME=nlbwmon
 PROG=/usr/sbin/nlbwmon
 NICEPRIO=19
 
+add_wan() {
+	local wan="$1"
+	network_get_device if_wan $wan
+	if network_get_device if_wan $wan; then
+		procd_append_param command '-w' "$wan:$if_wan"
+	fi
+}
+
 add_subnet() {
 	local network="$1"
 	local range ranges
@@ -76,6 +84,7 @@ parse_config() {
 	add_bool "$cfg" -Z database_compress 1
 
 	config_list_foreach "$cfg" local_network add_subnet
+	config_list_foreach "$cfg" wan_interface add_wan
 }
 
 start_service() {
